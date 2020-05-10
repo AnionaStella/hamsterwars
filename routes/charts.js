@@ -1,18 +1,18 @@
 const {
   Router
-} = require('express');
+} = require('express')
 const {
   auth,
   db
 } = require('../firebase')
 
-const router = new Router();
+const router = new Router()
 
 async function getHamsterArray(orderBy) {
   let hamsterDocs = await db.collection('hamsters')
-  let fbHamsters = await hamsterDocs.orderBy(orderBy, 'desc').limit(5).get();
+  let fbHamsters = await hamsterDocs.orderBy(orderBy, 'desc').limit(5).get()
 
-  let hamsters = [];
+  let hamsters = []
   fbHamsters.forEach(doc => {
     hamsters.push(doc.data())
   })
@@ -42,4 +42,4 @@ router.get('/bottom', async (req, res) => {
   }
 })
 
-module.exports = router;
+module.exports = router
