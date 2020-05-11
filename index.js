@@ -3,9 +3,10 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-app.use(express.static('assets'))
-//const frontendRoute = require('.//')
-// app.use('/', frontendRoute)
+app.use(express.static('public'))
+
+const frontendRoute = require('./routes/frontend')
+app.use('/', frontendRoute)
 
 const chartsRoute = require('./routes/charts')
 app.use('/charts', chartsRoute)

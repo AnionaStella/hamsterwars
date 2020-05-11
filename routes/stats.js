@@ -11,15 +11,20 @@ const router = new Router();
 
 router.get('/:option', async (req, res) => {
 
-  //Returnerar ett statsobject med totalt antal matcher som hållits.
   if (req.params.option == "total") {
-    let gamesRef = await db.collection('games').get()
-    let amountOfGames = gamesRef.size
+    try {
+      let gamesRef = await db.collection('games').get()
+      let amountOfGames = gamesRef.size
 
-    res.send({
-      totalGames: amountOfGames
-    })
+      res.status(200).send({
+        totalGames: amountOfGames
+      })
+    } catch (err) {
+      console.error(err)
+      res.status(500).send('Sorry, could not find total amount of games')
+    }
   }
+
 
 })
 
