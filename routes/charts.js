@@ -8,10 +8,9 @@ const {
 
 const router = new Router()
 
+//function to get hamsters based on query
 async function getHamsterArray(orderBy) {
-  let hamsterDocs = await db.collection('hamsters')
-  let fbHamsters = await hamsterDocs.orderBy(orderBy, 'desc').limit(5).get()
-
+  let fbHamsters = await db.collection('hamsters').orderBy(orderBy, 'desc').limit(5).get()
   let hamsters = []
   fbHamsters.forEach(doc => {
     hamsters.push(doc.data())
@@ -19,7 +18,7 @@ async function getHamsterArray(orderBy) {
   return hamsters;
 }
 
-
+// find hamsters with most wins
 router.get('/top', async (req, res) => {
   try {
 
@@ -31,6 +30,7 @@ router.get('/top', async (req, res) => {
   }
 })
 
+// find hamsters with most defeats
 router.get('/bottom', async (req, res) => {
   try {
 

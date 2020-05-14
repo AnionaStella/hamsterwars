@@ -1,12 +1,11 @@
-const express = require('express');
+const express = require('express')
 
-const app = express();
-app.use(express.json());
+const app = express()
+app.use(express.json())
 
-app.use(express.static('public'))
+app.use('/', express.static('public')) //-- to serve frontend
 
-const frontendRoute = require('./routes/frontend')
-app.use('/', frontendRoute)
+app.use('/assets', express.static('assets'))
 
 const chartsRoute = require('./routes/charts')
 app.use('/charts', chartsRoute)
