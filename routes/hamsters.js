@@ -27,7 +27,6 @@ router.get('/', async (req, res) => {
 })
 
 //get hamster with id or get random hamster
-// /random/:amount för att utöka mängd random som ska tas fram
 router.get('/:id', async (req, res) => {
   try {
     if (req.params.id !== "random") {

@@ -1,12 +1,12 @@
 const {
   Router
-} = require('express');
+} = require('express')
 const {
   auth,
   db
 } = require('../firebase')
 
-const router = new Router();
+const router = new Router()
 
 // get stats for total amount of games, or hamster that battled the most
 router.get('/:option', async (req, res) => {
