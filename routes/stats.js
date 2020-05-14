@@ -23,7 +23,7 @@ router.get('/:option', async (req, res) => {
       console.error(err)
       res.status(500).send('Sorry, could not find total amount of games')
     }
-  } else if (req.params.option == "most") {
+  } else if (req.params.option == "battled-most") {
     try {
       let veteranHamster
       let mostDocs = await db.collection('hamsters').orderBy('games', 'desc').limit(1).get()
